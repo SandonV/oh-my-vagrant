@@ -45,8 +45,24 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+    file {'file'}:
+        path    => "/tmp/myfile1",
+        ensure  => file,
+        content => "This is a file",
+    }
 
+    exec { "cat myfile1 >> myfile2":
+        cwd     => "/tmp"
+        path    => ["/usr/bin", "/usr/sbin"],
+        onlyif  => "grep file myfile1",
+        creates => "/tmp/myfile2".
+    {
+
+    exec { "echo anotherline >> myfile1":
+        cwd     => "/tmp"
+        path    => ["/usr/bin", "/usr/sbin"],
+        unless  => "grep anotherline myfile1",
+    }
 }
 
 # vim: ts=8
