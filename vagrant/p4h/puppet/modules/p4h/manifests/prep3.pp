@@ -38,7 +38,9 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+    $name = "Sandon"
+    $welcome = "Welcome, ${name}"
+    noitfy { $welcome }
 
 }
 
