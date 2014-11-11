@@ -31,8 +31,15 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+    package { 'cowsay':
+    	ensure => present,
+    }
 
+    package { "iftop": ensure => "installed" }
+    package { "ceph": ensure => "installed" }
+    package { "curl":   ensure => "installed" }
+
+    package {[ "wget", "httpd", "iptraf" ]: ensure => "installed" }
 }
 
 # vim: ts=8
