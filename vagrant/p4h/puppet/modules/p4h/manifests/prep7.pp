@@ -42,7 +42,27 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+    p4h::prep7_put_file { '/etc/rc.local':
+        path        => '/etc/rc.local',
+        content     => 'dmesg -n 7',        
+    }
+
+    p4h::prep7_put_file { '/etc/motd':
+        path        => '/etc/motd',
+        content     => 'Be careful when you roam...',        
+    }
+
+    user { 'ceph':
+        ensure      => present,
+    }
+
+    p4h::prep7_enable_service { 'cron':
+        service     => 'cron'
+    }
+
+    p4h::prep7_enable_service { 'ceph':
+        service     => 'ceph'
+    }
 
 }
 
