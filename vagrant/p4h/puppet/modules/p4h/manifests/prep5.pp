@@ -41,8 +41,7 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
-
+    include prep5a
 }
 
 # vim: ts=8
