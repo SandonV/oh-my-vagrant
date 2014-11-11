@@ -38,8 +38,18 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+    
+    $os= inline_template("Operating System is: [<%= @operatingsystem %>]")
 
-}
+    $x = 12
+    $y = 40
+
+    $add = inline_template("<%= $x + $y %>")
+
+    file { 'motd':
+        path    => '/etc/motd',
+        ensure  => file,
+        content => template("p4h/templates/prep4.erb"),
+    }
 
 # vim: ts=8
