@@ -32,8 +32,18 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+    file {'/home/sandon/poem.txt':
+      ensure  => present,
+      content => "There once was a man from nantuckit....",
+	}
+	user {'sandon':
+        gid => 'puppet',
+        shell => '/bin/bash',
+        home => '/home/sandon',
+		ensure => present,
+	}
 
+    User['sandon'] -> File['/home/sandon/poem.txt']
 }
 
 # vim: ts=8
